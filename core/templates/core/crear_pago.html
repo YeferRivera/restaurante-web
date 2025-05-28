@@ -1,15 +1,15 @@
 {% extends "core/base.html" %}
-{% block title %}Editar Plato | Restaurante{% endblock %}
+{% block title %}Registrar Pago | Restaurante{% endblock %}
 {% block content %}
 <div class="card mx-auto" style="max-width:500px;">
     <div class="card-body">
-        <h2 class="card-title mb-4">Editar plato: {{ plato.nombre }}</h2>
+        <h2 class="card-title mb-4">Registrar nuevo pago</h2>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <div class="d-flex justify-content-between">
-                <a href="{% url 'home' %}" class="btn btn-secondary">Volver</a>
-                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                <a href="{% url 'listar_pagos' %}" class="btn btn-secondary">Volver</a>
+                <button type="submit" class="btn btn-success">Registrar</button>
             </div>
         </form>
     </div>

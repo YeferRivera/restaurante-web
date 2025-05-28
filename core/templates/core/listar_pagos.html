@@ -1,0 +1,36 @@
+{% extends "core/base.html" %}
+{% block title %}Pagos | Restaurante{% endblock %}
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Pagos realizados</h1>
+    <a href="{% url 'crear_pago' %}" class="btn btn-success">+ Nuevo pago</a>
+</div>
+<table class="table table-bordered table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Orden</th>
+            <th>Monto</th>
+            <th>Fecha</th>
+            <th class="text-center">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pago in pagos %}
+            <tr>
+                <td>{{ pago.id }}</td>
+                <td>#{{ pago.orden.id }}</td>
+                <td>${{ pago.monto }}</td>
+                <td>{{ pago.fecha|date:"d/m/Y H:i" }}</td>
+                <td class="text-center">
+                    <a href="{% url 'detalle_pago' pago.id %}" class="btn btn-sm btn-info">Detalles</a>
+                </td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td colspan="5" class="text-center">No hay pagos registrados.</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

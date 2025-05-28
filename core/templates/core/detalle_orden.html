@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+{% block title %}Detalle Orden | Restaurante{% endblock %}
+{% block content %}
+<div class="card mx-auto" style="max-width:600px;">
+    <div class="card-body">
+        <h2 class="card-title mb-3">Orden #{{ orden.id }}</h2>
+        <p><b>Usuario:</b> {{ orden.usuario.username }}</p>
+        <p><b>Fecha:</b> {{ orden.fecha|date:"d/m/Y H:i" }}</p>
+        <p><b>Estado:</b>
+            {% if orden.pagada %}
+                <span class="badge bg-success">Pagada</span>
+            {% else %}
+                <span class="badge bg-warning text-dark">No pagada</span>
+            {% endif %}
+        </p>
+        <h4>Platos:</h4>
+        <ul>
+            {% for plato in orden.platos.all %}
+                <li>{{ plato.nombre }} - ${{ plato.precio }}</li>
+            {% endfor %}
+        </ul>
+        <a href="{% url 'listar_ordenes' %}" class="btn btn-secondary">Volver</a>
+    </div>
+</div>
+{% endblock %}
