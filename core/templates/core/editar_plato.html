@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Plato</title>
+</head>
+<body>
+    <h1>Editar Plato: {{ plato.nombre }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    <a href="{% url 'home' %}">Volver a la lista de platos</a>
+</body>
+</html>

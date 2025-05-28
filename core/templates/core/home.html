@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurante - Inicio</title>
+</head>
+<body>
+    <h1>Bienvenido a nuestro Restaurante</h1>
+    <a href="{% url 'crear_plato' %}">Crear nuevo plato</a>
+    <h2>Platos disponibles:</h2>
+    <ul>
+        {% for plato in platos %}
+            <li>
+                <strong>{{ plato.nombre }}</strong> - ${{ plato.precio }} <br>
+                {{ plato.descripcion }}<br>
+                <a href="{% url 'editar_plato' plato.id %}">Editar</a> | 
+                <a href="{% url 'eliminar_plato' plato.id %}">Eliminar</a>
+            </li>
+        {% empty %}
+            <li>No hay platos disponibles.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
