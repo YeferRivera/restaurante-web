@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% block title %}Eliminar Orden | Restaurante{% endblock %}
+{% block content %}
+<div class="card mx-auto border-danger" style="max-width:500px;">
+    <div class="card-body">
+        <h2 class="card-title text-danger">Eliminar orden</h2>
+        <p>¿Estás seguro que deseas eliminar la orden #{{ orden.id }}?</p>
+        <form method="post" class="d-flex justify-content-between">
+            {% csrf_token %}
+            <a href="{% url 'listar_ordenes' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

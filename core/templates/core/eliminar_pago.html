@@ -1,0 +1,15 @@
+{% extends "core/base.html" %}
+{% block title %}Eliminar Pago | Restaurante{% endblock %}
+{% block content %}
+<div class="card mx-auto border-danger" style="max-width:500px;">
+    <div class="card-body">
+        <h2 class="card-title text-danger">Eliminar pago</h2>
+        <p>¿Estás seguro que deseas eliminar el pago #{{ pago.id }}?</p>
+        <form method="post" class="d-flex justify-content-between">
+            {% csrf_token %}
+            <a href="{% url 'listar_pagos' %}" class="btn btn-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
